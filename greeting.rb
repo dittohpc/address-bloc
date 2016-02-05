@@ -1,8 +1,4 @@
-def greeting
-  greet = ARGV.shift
-  ARGV.each do |arg|
-     puts "#{greet} #{arg}!"
-  end
+greeting = ARGV.shift
+ARGV.each do |arg|
+  puts "#{greeting} #{arg}"
 end
-
-greeting
