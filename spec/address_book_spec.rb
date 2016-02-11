@@ -33,7 +33,6 @@ describe "#add_entry" do
   it "adds only one entry to the address book" do
 #    book = AddressBook.new
     book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
-
     expect(book.entries.size).to eq(1)
   end
 
@@ -109,6 +108,34 @@ end
 #      expect(entry_five.phone_number).to eq "555-555-2036"
 #      expect(entry_five.email).to eq "sussie@blocmail.com"
     end
+  end
 
+  describe "Import from entries_2.csv" do
+    it "imports the correct number of entries" do
+      book.import_from_csv("entries_2.csv")
+      book_size = book.entries.size
+      # Check the size of the entries in AddressBook
+      expect(book_size).to eq 3
+    end
+    it "imports the 1st entry" do
+      book.import_from_csv("entries_2.csv")
+      # Check the first entry
+      entry_one = book.entries[0]
+      check_entry(entry_one, "Blake", "555-555-0020", "blake@dittoh.com")
+    end
+
+    it "imports the 2nd entry" do
+      book.import_from_csv("entries_2.csv")
+      # Check the second entry
+      entry_two = book.entries[1]
+      check_entry(entry_two, "Drake", "555-555-0010", "drake@dittoh.com")
+    end
+
+    it "imports the 3rd entry" do
+      book.import_from_csv("entries_2.csv")
+      # Check the third entry
+      entry_three = book.entries[2]
+      check_entry(entry_three, "Landen", "555-555-0017", "landen@dittoh.com")
+    end
   end
 end
