@@ -29,6 +29,19 @@ describe "attributes" do
   end
 end
 
+describe "#demolish_entry" do
+  it "deletes all the entries" do
+    book.add_entry('Bill Lovelace', '010.012.1813', 'bill@lovelace.com')
+    book.add_entry('Joe Lovelace', '010.012.1814', 'joe@lovelace.com')
+    book.add_entry('Ada Lovelace', '010.012.1815', 'ada@lovelace.com')
+    expect(book.entries.size).to eq(3)
+
+    book.demolish_entry
+    expect(book.entries.size).to eq 0
+  end
+
+end
+
 describe "#add_entry" do
   it "adds only one entry to the address book" do
 #    book = AddressBook.new
@@ -157,7 +170,7 @@ end
       book.import_from_csv("entries.csv")
       entry = book.binary_search("Billy")
       expect(entry).to be_nil
-    end  
+    end
 
   end # end for #binary_search describe
 

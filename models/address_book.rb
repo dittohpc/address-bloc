@@ -9,6 +9,10 @@ class AddressBook
     @entries = []
   end
 
+  def demolish_entry
+    @entries = []
+#    @entries.each {|n| @entries.delete(n)}
+  end
 
   def add_entry(name, phone_number, email)
 # #9
