@@ -62,4 +62,25 @@ class AddressBook
     return nil
   end #end for binary_search
 
+  # Search interatively through AddressBook for a specific entry by name
+  def iterative_search(name)
+# #1
+    index = 0
+    upper = @entries.length - 1
+
+# #2
+    while index <= upper
+# #3
+      found_name = @entries[index].name
+# #4
+      if name == found_name
+        return @entries[index]
+      else
+        index += 1
+      end
+    end
+# #5
+    return nil
+  end #end for iterative search
+
 end
